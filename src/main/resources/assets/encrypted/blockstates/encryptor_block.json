@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "encrypted:block/encryptor_block"
+      "model": "encrypted:block/encryptor_block_model"
     }
   }
 }

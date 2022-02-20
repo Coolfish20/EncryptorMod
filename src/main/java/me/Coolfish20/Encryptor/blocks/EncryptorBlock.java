@@ -51,7 +51,7 @@ public class EncryptorBlock extends Block {
                     if (k == (Items.PAPER)) {
                         StringTextComponent key = new StringTextComponent(tile.getTileData().getString("key"));
                         System.out.println("2 IF!");
-                        ITextComponent name = k.getName(k.getDefaultInstance());
+                        ITextComponent name = k.getDefaultInstance().getDisplayName();
                         if (name == key) {
                             System.out.println("3 IF!");
                             Item message = Items.PAPER;

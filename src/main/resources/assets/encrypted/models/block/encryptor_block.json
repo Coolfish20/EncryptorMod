@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "encrypted:blocks/encryptor_top",
-    "side": "encrypted:blocks/encryptor_side"
-  }
-}

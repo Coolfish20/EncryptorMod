@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "encrypted:block/encryptor_top",
+    "north": "encrypted:block/encryptor_side",
+    "south": "encrypted:block/encryptor_side",
+    "east": "encrypted:block/encryptor_side",
+    "west": "encrypted:block/encryptor_side",
+    "up": "encrypted:block/encryptor_top",
+    "down": "encrypted:block/encryptor_top"
+  }
+}
