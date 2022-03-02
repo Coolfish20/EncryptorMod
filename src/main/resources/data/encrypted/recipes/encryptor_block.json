@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#C#",
+    "CRC",
+    "#C#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "encrypted:encryptor_block",
+    "count": 1
+  }
+}

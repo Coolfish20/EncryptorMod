@@ -1,10 +1,11 @@
 package me.Coolfish20.Encryptor;
 
+import me.Coolfish20.Encryptor.events.BlockPlaceEvent;
+import me.Coolfish20.Encryptor.events.PlayerRightClickBlockEvent;
 import me.Coolfish20.Encryptor.init.Register;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 
@@ -20,16 +21,9 @@ public class Encryptor
         Register.BLOCKS.register(bus);
         Register.TILE_ENTITIES.register(bus);
         Register.ITEMS.register(bus);
-        // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-
-    }
-
-
-
-
-    private void setup(final FMLCommonSetupEvent event)
-    {
+        Register.SOUND_EVENTS.register(bus);
+        MinecraftForge.EVENT_BUS.register(new BlockPlaceEvent());
+        MinecraftForge.EVENT_BUS.register(new PlayerRightClickBlockEvent());
     }
 
 

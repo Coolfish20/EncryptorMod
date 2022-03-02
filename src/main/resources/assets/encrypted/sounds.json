@@ -1,0 +1,9 @@
+{
+  "encryptor_default": {
+    "category": "blocks",
+    "subtitle": "encrypted.encryptor_default",
+    "sounds": [
+      "encrypted:encryptor_default"
+    ]
+  }
+}
