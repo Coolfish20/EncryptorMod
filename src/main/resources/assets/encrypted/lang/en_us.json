@@ -1,4 +1,8 @@
 {
 "block.encrypted.encryptor_block": "Encryptor",
-"encrypted.encryptor_default": "Encryptor Beeps"
+"encrypted.encryptor_default": "Encryptor Beeps",
+"block.encrypted.recorder_block": "Recorder",
+"item.encrypted.recorder_tape": "Recorder Tape",
+"entity.encrypted.spy_bomb": "Spy Bomb",
+"item.encrypted.bomb_spawn_egg": "Spy Bomb Egg"
 }

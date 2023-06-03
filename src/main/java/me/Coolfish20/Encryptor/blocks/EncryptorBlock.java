@@ -33,7 +33,7 @@ public class EncryptorBlock extends Block {
     }
 
 
-    @Override//Using these methods, till I find some better alternatives
+    @Override//Using these methods, until I find some better alternatives
     public void onRemove(BlockState state, World world, BlockPos pos, BlockState state2, boolean p_196243_5_) {
         TileEntity tileEntity = world.getBlockEntity(pos);
         if (tileEntity instanceof EncryptorTileEntity) {

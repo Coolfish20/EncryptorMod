@@ -13,26 +13,27 @@ public class EncryptorTileEntity extends TileEntity{
         super(Register.ENCRYPTOR_TILE_ENTITY.get());
     }
 
-    private String key;
-    private String message;
-
-    //WRITING THE DATA TO NBT
     @Override
     public CompoundNBT save(CompoundNBT nbt){
-        super.save(nbt);//Super call is required to save tiles location
-        nbt.putString("key", this.getTileData().getString("key"));
-        nbt.putString("message", this.getTileData().getString("message"));
-        return nbt;//Returning the gathered nbt
+    super.save(nbt);
+    for(String s: this.getTileData().getAllKeys()){
+    if(s.equals("message") || s.equals("key")){
+        nbt.putString(s, this.getTileData().getString(s));
     }
-    //LOADING THE DATA FROM NBT
+    }
+        return nbt;
+    }
+
     @Override
     public void load(BlockState state, CompoundNBT nbt){
-    String key = nbt.getString("key"); //Getting the actual string from the saved nbt
-    String message =nbt.getString("message");
-    nbt.putString("key", key); //Putting the strings value to nbt
-    nbt.putString("message", message);
-    super.load(state, nbt);//Calling super to load the data back in
+    super.load(state,nbt);
+    for(String s : nbt.getAllKeys()){
+    if(s.equals("message") || s.equals("key")){
+    this.getTileData().putString(s, nbt.getString(s));
     }
+    }
+    }
+
 
 }
 
