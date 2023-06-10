@@ -25,14 +25,14 @@ public class Encryptor
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         Register.BLOCKS.register(bus);
         Register.TILE_ENTITIES.register(bus);
+        Register.ENTITY.register(bus);
+        bus.register(new ClientRegistry());
         Register.ITEMS.register(bus);
         Register.SOUND_EVENTS.register(bus);
-        Register.ENTITY.register(bus);
         MinecraftForge.EVENT_BUS.register(new BlockPlaceEvent());
         MinecraftForge.EVENT_BUS.register(new PlayerRightClickBlockEvent());
         MinecraftForge.EVENT_BUS.register(new CommandExecuteEvent());
         MinecraftForge.EVENT_BUS.register(new EntityInteractEvent());
-        bus.register(new ClientRegistry());
     }
 
 

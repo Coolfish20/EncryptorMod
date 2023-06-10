@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "iTi",
+        " i "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:redstone_torch"
+        },
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "T": {
+            "item": "minecraft:tnt"
+        }
+    },
+    "result": {
+        "item": "encrypted:bomb_spawn_egg",
+        "count": 1
+    }
+}

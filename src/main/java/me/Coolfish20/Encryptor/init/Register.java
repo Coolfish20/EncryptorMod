@@ -17,9 +17,11 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -27,6 +29,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.awt.*;
 import java.util.Properties;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -81,7 +84,7 @@ public class Register {
                     .build(new ResourceLocation(Encryptor.MOD_ID,"spy_bomb").toString()));
 
     public static RegistryObject<Item> BOMB_SPAWN = ITEMS.register("bomb_spawn_egg", ()->
-            new BombCreateEgg(new Item.Properties().tab(ItemGroup.TAB_COMBAT)));
+            new BombCreateEgg(new Item.Properties().stacksTo(1).tab(ItemGroup.TAB_COMBAT)));
 
 
 }

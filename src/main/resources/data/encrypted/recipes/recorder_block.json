@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "COC",
+        "LDL"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:redstone_block"
+        },
+        "C": {
+            "item": "minecraft:comparator"
+        },
+        "O": {
+            "item": "minecraft:observer"
+        },
+        "L": {
+            "item": "minecraft:lapis_block"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        }
+    },
+    "result": {
+        "item": "encrypted:recorder_block",
+        "count": 1
+    }
+}
