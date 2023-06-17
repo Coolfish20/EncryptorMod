@@ -19,6 +19,7 @@ import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -103,6 +104,39 @@ public class RecorderBlock extends HorizontalBlock {
     public BlockState getStateForPlacement(BlockItemUseContext context){//Modifies the state of a block
         return this.defaultBlockState().setValue(HorizontalBlock.FACING, context.getHorizontalDirection().getOpposite());
     }//BlockStates are booleans
+
+    @Override
+    public void onBlockExploded(BlockState state, World world, BlockPos pos, Explosion explosion) {
+        TileEntity tileEntity = world.getBlockEntity(pos);
+        if (tileEntity instanceof RecorderTileEntity) {
+            //Saving the message Number
+            int message_number = tileEntity.getTileData().getInt("message_number");
+            ItemStack tilestack = new ItemStack(Register.RECORDER_ITEM.get());
+            if (message_number != 0) {
+                CompoundNBT nbt1 = new CompoundNBT();
+                tilestack.addTagElement("message_number", nbt1);//Creating CompoundNBT and assigning the key to it
+                tilestack.getTagElement("message_number").putInt("message_number", message_number);
+            }
+
+
+            for (int i = 0; i < message_number; i++) {
+                String key = "message_" + String.valueOf(i + 1);//very important <--
+                String recording = tileEntity.getTileData().getString(key);
+                CompoundNBT nbt = new CompoundNBT();
+                tilestack.addTagElement("recordings", nbt);
+                tilestack.getTagElement("recordings").putString(key, recording);
+
+            }
+
+
+            ItemEntity tilestackentity = new ItemEntity(tileEntity.getLevel(), pos.getX(), pos.getY(), pos.getZ());
+            tilestackentity.setItem(tilestack);
+            tileEntity.setRemoved();
+            world.addFreshEntity(tilestackentity);
+
+        }
+        super.onBlockExploded(state, world,pos,explosion);
+    }
 
     @Override
     public void onRemove(BlockState state, World world, BlockPos pos, BlockState state2, boolean p_196243_5_){

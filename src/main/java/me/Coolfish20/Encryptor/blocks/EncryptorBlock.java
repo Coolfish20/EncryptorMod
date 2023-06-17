@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -32,6 +33,31 @@ public class EncryptorBlock extends Block {
         return new EncryptorTileEntity();
     }
 
+    @Override
+    public void onBlockExploded(BlockState state, World world, BlockPos pos, Explosion explosion) {
+        TileEntity tileEntity = world.getBlockEntity(pos);
+        if (tileEntity instanceof EncryptorTileEntity) {
+            String tilekey = tileEntity.getTileData().getString("key");
+            String tilemessage = tileEntity.getTileData().getString("message");
+            ItemStack tilestack = new ItemStack(Register.ENCRYPTOR_ITEM.get());
+            if (tileEntity.getTileData().getString("key") != "") {
+                CompoundNBT nbt1 = new CompoundNBT();
+                tilestack.addTagElement("tilekey", nbt1);//Creating CompoundNBT and assigning the key to it
+                tilestack.getTagElement("tilekey").putString("key", tilekey);
+            }
+            if (tileEntity.getTileData().getString("message") != "") {
+                CompoundNBT nbt2 = new CompoundNBT();
+                tilestack.addTagElement("tilemessage", nbt2);
+                tilestack.getTagElement("tilemessage").putString("message", tilemessage);
+            }
+            ItemEntity tilestackentity = new ItemEntity(tileEntity.getLevel(), pos.getX(), pos.getY(), pos.getZ());
+            tilestackentity.setItem(tilestack);
+            tileEntity.setRemoved();
+            world.addFreshEntity(tilestackentity);
+
+        }
+        super.onBlockExploded(state, world, pos, explosion);
+    }
 
     @Override//Using these methods, until I find some better alternatives
     public void onRemove(BlockState state, World world, BlockPos pos, BlockState state2, boolean p_196243_5_) {
